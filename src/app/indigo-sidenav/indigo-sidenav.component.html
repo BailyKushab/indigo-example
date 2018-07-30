@@ -1,0 +1,30 @@
+<div class="indigo-sidenav sidenav-animate-left" *ngIf="menu.active">
+  <div class="indigo-name-display">Hello {{user.name}}</div>
+  <ng-container *ngIf="!selectedOption">
+      <a class="indigo-sidenav-button" *ngFor="let option of options" (click)="onSelect(option)">
+          <span>{{option.display | uppercase}}</span>
+          <button *ngIf="option.suboptions">
+              <i class="fas fa-chevron-right"></i>
+          </button>
+        </a>
+  </ng-container>
+  
+  <ng-container *ngIf="selectedOption">
+    <div class="nested-indigo-sidenav sidenav-animate-right">
+        <a class="indigo-sidenav-button" *ngFor="let suboption of selectedOption.suboptions" (click)="onSelect(suboption)" >
+            <span>{{suboption.display}}</span>
+            <button *ngIf="suboption.suboptions">
+                <i class="fas fa-chevron-down"></i>
+            </button>
+        </a>
+        <div class="dropdown-container" *ngIf="selectedSubOption">
+            <a class="indigo-sidenav-button" *ngFor="let suboption of selectedSubOption.suboptions" (click)="onSelect(suboption)" >
+                <span>{{suboption.display}}</span>
+                <button *ngIf="suboption.suboptions">
+                    <i class="fas fa-chevron-down"></i>
+                </button>
+            </a>
+        </div>
+    </div>
+  </ng-container>
+</div>

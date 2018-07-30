@@ -1,0 +1,166 @@
+.indigo-toolbar{
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 2;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.indigo-nav{
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    padding: 8px 16px;
+    box-shadow: 0 3px 5px -1px rgba(0,0,0,.2), 0 6px 10px 0 rgba(0,0,0,.14), 0 1px 18px 0 rgba(0,0,0,.12);
+    justify-content: space-between;
+}
+
+.indigo-nav>p{
+    box-sizing: border-box;
+    position: relative;
+    display: inline-block;
+    font-family: lobster;
+    color:white;
+    padding:0 16px;
+    margin: 0;
+    min-width: 88px;
+    line-height: 36px;
+}
+
+.indigo-nav>button{
+    display: block;
+    box-sizing: border-box;
+    position: relative;
+    padding: 0;
+    min-width: 0;
+    width: 40px;
+    height: 40px;
+    flex-shrink: 0;
+    line-height: 40px;
+    border: none;
+    background: 0 0;
+}
+
+.IndigoMenuIcon {
+    cursor: pointer;
+}
+
+.IndigoMenuIcon span {
+    display: block;
+    position: absolute;
+    height: 5px;
+    width: 100%;
+    background: #d3531a;
+    border-radius: 9px;
+    opacity: 1;
+    left: 0;
+  }
+
+/* This is the menu icon as a hamburger */
+.IndigoMenuIcon span:nth-child(1) {
+    top: 0px;
+}
+.IndigoMenuIcon span:nth-child(2),.IndigoMenuIcon span:nth-child(3) {
+    top: 10px;
+}
+.IndigoMenuIcon span:nth-child(4) {
+    top: 20px;
+}
+
+
+.IndigoMenuIcon.active span:nth-child(1) {
+    animation-duration: .25s;
+    animation-name: span1;
+    animation-fill-mode: forwards;
+}
+.IndigoMenuIcon.active span:nth-child(4) {
+    animation-duration: .25s;
+    animation-name: span4;
+    animation-fill-mode: forwards;
+}
+
+@keyframes span1 {
+    0% {
+        top: 0px;
+        width: 0%;
+        left: 0%;
+    }
+    100% {
+        top: 18px;
+        width: 0%;
+        left: 50%;    
+    }
+}
+@keyframes span4 {
+    0% {
+        top: 20px;
+        width: 0%;
+        left: 0%;
+    }
+    100% {
+        top: 18px;
+        width: 0%;
+        left: 50%;    
+    }
+}
+
+.IndigoMenuIcon.active span:nth-child(2) {
+    animation-duration: .5s;
+    animation-name: span2;
+    animation-fill-mode: forwards;
+}
+.IndigoMenuIcon.active span:nth-child(3) {
+    animation-duration: .5s;
+    animation-name: span3;
+    animation-fill-mode: forwards;
+}
+
+@keyframes span2 {
+    0% {
+        transform: rotate(0deg);
+    }
+    50% {
+        transform: rotate(0deg);
+    }
+    60% {
+        transform: rotate(-50deg);  
+    }
+    70% {
+        transform: rotate(-95deg);  
+    }
+    80% {
+        transform: rotate(-135deg);  
+    }
+    90% {
+        transform: rotate(-175deg);  
+    }
+    100% {
+        transform: rotate(-225deg);  
+    }
+}
+@keyframes span3 {
+    0% {
+        transform: rotate(0deg);
+    }
+    50% {
+        transform: rotate(0deg);
+    }
+    60% {
+        transform: rotate(0deg);  
+    }
+    70% {
+        transform: rotate(-40deg);  
+    }
+    80% {
+        transform: rotate(-89deg);  
+    }
+    90% {
+        transform: rotate(-110deg);  
+    }
+    100% {
+        transform: rotate(-135deg);  
+    }
+}
