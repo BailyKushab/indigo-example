@@ -11,20 +11,22 @@
   
   <ng-container *ngIf="selectedOption">
     <div class="nested-indigo-sidenav sidenav-animate-right">
-        <a class="indigo-sidenav-button" *ngFor="let suboption of selectedOption.suboptions" (click)="onSelect(suboption)" >
-            <span>{{suboption.display}}</span>
-            <button *ngIf="suboption.suboptions">
-                <i class="fas fa-chevron-down"></i>
-            </button>
+        <a class="indigo-sidenav-button" *ngFor="let suboption of selectedOption.suboptions" (click)="onSelectSub(suboption)" >
+            <ng-container >
+              <span>{{suboption.display}}</span>
+              <button *ngIf="suboption.suboptions">
+                  <i class="fas fa-chevron-down"></i>
+              </button>
+              <div class="indigo-dropdown-container" *ngIf="selectedSubOption == suboption">
+                  <a class="indigo-sidenav-button" *ngFor="let suboption of selectedSubOption.suboptions">
+                      <span>{{suboption.display}}</span>
+                      <button *ngIf="suboption.suboptions">
+                          <i class="fas fa-chevron-down"></i>
+                      </button>
+                  </a>
+              </div>
+          </ng-container> 
         </a>
-        <div class="dropdown-container" *ngIf="selectedSubOption">
-            <a class="indigo-sidenav-button" *ngFor="let suboption of selectedSubOption.suboptions" (click)="onSelect(suboption)" >
-                <span>{{suboption.display}}</span>
-                <button *ngIf="suboption.suboptions">
-                    <i class="fas fa-chevron-down"></i>
-                </button>
-            </a>
-        </div>
     </div>
   </ng-container>
 </div>

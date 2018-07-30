@@ -15,27 +15,20 @@ export class IndigoSidenavComponent implements OnInit {
     {display: "My Schedule & Bidding", suboptions: [{
           display: "Reporting", 
           suboptions:[{
-              display: "I-21 Injury Reporting", 
-              suboptions:[]
+              display: "I-21 Injury Reporting"
             },{
-              display: "ASAP Reporting", 
-              suboptions:[]
+              display: "ASAP Reporting"
             },{
-              display: "General ASAP Information", 
-              suboptions:[]
+              display: "General ASAP Information"
             },{
-              display: "FlightAttendant Incident Report", 
-              suboptions:[]
+              display: "FlightAttendant Incident Report"
           }]
         },{
-          display: "Agriculture and Customs", 
-          suboptions:[]
+          display: "Agriculture and Customs"
         },{
-          display: "Known Crewmember", 
-          suboptions:[]
+          display: "Known Crewmember"
         },{
-          display: "Product Safety Data Search", 
-          suboptions:[]
+          display: "Product Safety Data Search"
         }]
     },
     {display: "Safety", suboptions: [{
