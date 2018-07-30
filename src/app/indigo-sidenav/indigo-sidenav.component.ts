@@ -9,7 +9,7 @@ import { MenuService } from '../menu.service';
 })
 export class IndigoSidenavComponent implements OnInit {
   user = {
-    name: "Trevor Robinson"
+    name: "John Smith"
   }
   options: Option[] = [
     {display: "My Schedule & Bidding", suboptions: [{
@@ -70,6 +70,10 @@ export class IndigoSidenavComponent implements OnInit {
 
   menu:any = {active:false};
 
+  nullOption:Option = {
+    display: "null"
+  }
+
   constructor(private menuService:MenuService) { }
 
   ngOnInit() {
@@ -82,7 +86,9 @@ export class IndigoSidenavComponent implements OnInit {
   }
 
   selectedOption: Option;
+  hideSubOptions: boolean = false;
   selectedSubOption: Option;
+  hideOtherSubOptions: boolean = false;
 
   onSelect(option: Option): void {
     this.selectedOption = option;
@@ -90,13 +96,29 @@ export class IndigoSidenavComponent implements OnInit {
     if(this.selectedOption.suboptions != undefined){
       console.log(this.selectedOption.suboptions);
     }
+    this.hideSubOptions = !this.hideSubOptions;
   }
   onSelectSub(option: Option): void {
-    this.selectedSubOption = option;
+    if(this.selectedSubOption === option){
+      //reset the submenu
+      this.selectedSubOption = this.nullOption;
+    }
+    else{
+      this.selectedSubOption = option;
+    }
     console.log(this.selectedSubOption.display);
     if(this.selectedSubOption.suboptions != undefined){
       console.log(this.selectedSubOption.suboptions);
     }
+    this.hideOtherSubOptions = !this.hideOtherSubOptions;
   }
 
+  onResetMenu(): void{
+    this.selectedOption = this.nullOption;
+    this.selectedSubOption = this.nullOption; 
+    this.hideOtherSubOptions = false;
+    this.hideSubOptions = false;
+  }
+  
 }
+

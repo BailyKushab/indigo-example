@@ -1,32 +1,37 @@
 <div class="indigo-sidenav sidenav-animate-left" *ngIf="menu.active">
-  <div class="indigo-name-display">Hello {{user.name}}</div>
-  <ng-container *ngIf="!selectedOption">
-      <a class="indigo-sidenav-button" *ngFor="let option of options" (click)="onSelect(option)">
+  <div class="indigo-name-display" (click)="onResetMenu()">Hello {{user.name}}</div>
+  <!-- <ng-container *ngIf="!hideSubOptions"> -->
+      <a class="indigo-sidenav-button indigo-ripple" *ngFor="let option of options" (click)="onSelect(option)">
           <span>{{option.display | uppercase}}</span>
           <button *ngIf="option.suboptions">
               <i class="fas fa-chevron-right"></i>
           </button>
         </a>
-  </ng-container>
+  <!-- </ng-container> -->
   
-  <ng-container *ngIf="selectedOption">
-    <div class="nested-indigo-sidenav sidenav-animate-right">
-        <a class="indigo-sidenav-button" *ngFor="let suboption of selectedOption.suboptions" (click)="onSelectSub(suboption)" >
-            <ng-container >
-              <span>{{suboption.display}}</span>
-              <button *ngIf="suboption.suboptions">
-                  <i class="fas fa-chevron-down"></i>
-              </button>
-              <div class="indigo-dropdown-container" *ngIf="selectedSubOption == suboption">
-                  <a class="indigo-sidenav-button" *ngFor="let suboption of selectedSubOption.suboptions">
-                      <span>{{suboption.display}}</span>
-                      <button *ngIf="suboption.suboptions">
-                          <i class="fas fa-chevron-down"></i>
-                      </button>
-                  </a>
-              </div>
-          </ng-container> 
-        </a>
+  <ng-container *ngIf="hideSubOptions">
+    <div class="nested-indigo-sidenav sidenav-animate-right" (click)="onResetMenu()">
+        
+        <li *ngFor="let suboption of selectedOption.suboptions">
+            <ng-container *ngIf="!hideOtherSubOptions || suboption==selectedSubOption">
+                <a class="indigo-sidenav-button indigo-ripple"  (click)="onSelectSub(suboption);$event.stopPropagation()" >
+                    <span>{{suboption.display}}</span>
+                    <button *ngIf="suboption.suboptions">
+                        <i [className]="(hideOtherSubOptions) ? 'fas fa-chevron-up' : 'fas fa-chevron-down'"></i>
+                    </button>
+                </a>
+                <ul class="indigo-dropdown-container dropdown-animate-down" *ngIf="selectedSubOption == suboption">
+                    <li *ngFor="let suboption of selectedSubOption.suboptions"><a class="indigo-sidenav-button" >
+                        <span>{{suboption.display}}</span>
+                        <button *ngIf="suboption.suboptions">
+                            <i class="fas fa-chevron-down"></i>
+                        </button>
+                    </a></li>
+                </ul>
+            </ng-container>
+        </li>
+        
+        
     </div>
   </ng-container>
 </div>

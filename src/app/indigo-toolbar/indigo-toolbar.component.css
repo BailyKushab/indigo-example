@@ -46,6 +46,7 @@
 
 .IndigoMenuIcon {
     cursor: pointer;
+    top: 10px;
 }
 
 .IndigoMenuIcon span {
